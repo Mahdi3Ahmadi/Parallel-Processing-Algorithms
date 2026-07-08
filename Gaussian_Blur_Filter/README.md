@@ -1,7 +1,7 @@
 # Gaussian Blur Filter Optimization (OpenMP & CUDA)
 
 ## Project Overview
-This project focuses on optimizing the standard **Gaussian Blur** image processing algorithm using High-Performance Computing (HPC) techniques. Applying a convolution filter on high-resolution images is a computationally expensive task ($O(N \times M \times K^2)$). 
+This project focuses on optimizing the standard **Gaussian Blur** image processing algorithm using High-Performance Computing (HPC) techniques. Applying a convolution filter on high-resolution images is a computationally expensive task O(N × M × K²). 
 
 The goal of this project was to take a slow, single-threaded serial implementation and parallelize it across multiple CPU cores and GPU multiprocessors to achieve maximum speedup.
 

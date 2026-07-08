@@ -1,9 +1,9 @@
 # Hybrid N-Body Simulation (Barnes-Hut Algorithm)
 
 ## Project Overview
-Simulating the gravitational forces between thousands of celestial bodies (N-Body problem) is a computationally massive task. The naive approach calculates every pair's interaction, resulting in an $O(N^2)$ time complexity. 
+Simulating the gravitational forces between thousands of celestial bodies (N-Body problem) is a computationally massive task. The naive approach calculates every pair's interaction, resulting in an O(N²) time complexity. 
 
-To overcome this, I implemented the **Barnes-Hut Algorithm**, which groups distant bodies into center-of-mass nodes using an **Octree** data structure, reducing the complexity to $O(N \log N)$. 
+To overcome this, I implemented the **Barnes-Hut Algorithm**, which groups distant bodies into center-of-mass nodes using an **Octree** data structure, reducing the complexity to O(N log N). 
 
 The true challenge and achievement of this project lie in its **Hybrid Parallel Architecture**. The workload is dynamically shared between Multi-core CPUs (via OpenMP) and Many-core GPUs (via CUDA) at every single timestep of the simulation.
 
@@ -19,7 +19,7 @@ Building an Octree requires dynamic memory allocation and complex branching, whi
 ### Phase 2: Force Evaluation on GPU (CUDA)
 Once the CPU builds the tree, the entire structure is flattened and transferred to the GPU VRAM. Each CUDA thread is assigned one body to calculate the net gravitational force acting upon it.
 * **Stack-Based Traversal (No Recursion!):** GPU architectures do not support deep call stacks for recursive functions. To traverse the Octree on the GPU, I implemented a **custom local Stack array** (`int stack[64]`). Each thread independently navigates the tree using a `while(top > 0)` loop, pushing and popping nodes.
-* **Multipole Acceptance Criterion (MAC):** During traversal, threads calculate the ratio of node size to distance ($s / d$). If the ratio is less than $\theta = 0.5$, the thread approximates the force using the node's center of mass and skips its children, saving massive amounts of computational time.
+* **Multipole Acceptance Criterion (MAC):** During traversal, threads calculate the ratio of node size to distance (s / d). If the ratio is less than θ = 0.5, the thread approximates the force using the node's center of mass and skips its children, saving massive amounts of computational time.
 
 ---
 

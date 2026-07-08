@@ -1,9 +1,9 @@
 # Matrix Multiplication Optimization (OpenMP & CUDA)
 
 ## Project Overview
-Matrix multiplication is a fundamental operation in scientific computing, machine learning, and deep learning. However, the standard mathematical approach has a time complexity of $O(n \times m \times k)$, making it highly inefficient for large-scale matrices on a single CPU core.
+Matrix multiplication is a fundamental operation in scientific computing, machine learning, and deep learning. However, the standard mathematical approach has a time complexity of O(N × M × K), making it highly inefficient for large-scale matrices on a single CPU core.
 
-The goal of this project was to parallelize the multiplication of two **non-square** matrices $A_{n \times m}$ and $B_{m \times k}$ into a resultant matrix $C_{n \times k}$, ensuring maximum hardware utilization using both Multi-core CPUs (OpenMP) and Many-core GPUs (CUDA).
+The goal of this project was to parallelize the multiplication of two **non-square** matrices A[n × m] and B[m × k] into a resultant matrix C[n × k], ensuring maximum hardware utilization using both Multi-core CPUs (OpenMP) and Many-core GPUs (CUDA).
 
 ---
 
