@@ -12,15 +12,15 @@ The core focus of these projects is to utilize **Multi-core CPUs (via OpenMP)** 
 ## Projects Portfolio
 
 ### [Gaussian Blur Filter Optimization](./Gaussian_Blur_Filter)
-An image processing project that accelerates the $O(N \times M \times K^2)$ convolution operations.
+An image processing project that accelerates the O(N × M × K²) convolution operations.
 * **Key Achievements:** Eliminated deep nested arrays by implementing **Memory Flattening** (3D to 1D) for optimal GPU Memory Coalescing. Mapped pixel coordinates mathematically to a 2D CUDA Grid/Block architecture (`dim3(16, 16)`).
 
 ### [Matrix Multiplication (Non-Square)](./Matrix_Multiplication)
-A robust linear algebra optimizer designed to handle the multiplication of large matrices with independent dimensions ($N \times M$ and $M \times K$).
+A robust linear algebra optimizer designed to handle the multiplication of large matrices with independent dimensions O(N × M × K).
 * **Key Achievements:** Achieved perfect CPU thread load-balancing using OpenMP's `#pragma omp parallel for collapse(2)`. Prevented GPU segmentation faults through strict boundary condition checks inside the CUDA Kernels.
 
 ### [Hybrid N-Body Simulation (Barnes-Hut)](./Hybrid_NBody_BarnesHut)
-**Featured Project:** A highly complex physics engine simulating gravitational forces using an $O(N \log N)$ Octree algorithm, dynamically balancing the workload between the CPU and GPU at every timestep.
+**Featured Project:** A highly complex physics engine simulating gravitational forces using an O(N log N) Octree algorithm, dynamically balancing the workload between the CPU and GPU at every timestep.
 * **Key Achievements:** * **CPU (OpenMP):** Multithreaded Octree construction using `omp_lock_t` (Atomic Locks) to prevent data race conditions without bottlenecking the system.
   * **GPU (CUDA C++):** Overcame the GPU's lack of support for deep recursion by designing a **Custom Stack-based Traversal** (`while` loop with a local array stack) to navigate the Octree purely on the graphic cores.
 
